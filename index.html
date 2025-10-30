@@ -280,6 +280,9 @@
     </div>
 
     <script>
+        // 每次打开页面都清除状态（保持初始状态）
+        localStorage.removeItem('isWatered');
+        localStorage.removeItem('hasRegistered');
         // 页面元素
         const plantImage = document.getElementById('plantImage');
         const waterBtn = document.getElementById('waterBtn');
@@ -453,4 +456,5 @@
 
 
 </html>
+
 
