@@ -60,7 +60,6 @@
     <p class="info">姓名：<span id="name"></span></p>
     <p class="info">联系方式：<span id="phone"></span></p>
     <p class="info">公司：<span id="company"></span></p>
-    <p class="info">地域：<span id="region"></span></p>
 
     <div id="qrcode"></div>
     <button id="saveBtn">保存页面图片</button>
@@ -75,8 +74,7 @@
         const params = new URLSearchParams(window.location.search);
         document.getElementById('name').textContent = params.get('field_1') || '';
         document.getElementById('phone').textContent = params.get('field_2') || '';
-        document.getElementById('company').textContent = params.get('field_3') || '';
-        document.getElementById('region').textContent = params.get('region') || '';
+        document.getElementById('company').textContent = params.get('field_4') || '';
 
         // 2. 生成二维码，指向当前页面
         new QRCode(document.getElementById("qrcode"), {
@@ -99,3 +97,4 @@
 
 
 </html>
+
