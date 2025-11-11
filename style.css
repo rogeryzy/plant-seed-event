@@ -1,0 +1,54 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Microsoft YaHei", sans-serif;
+    text-align: center;
+}
+
+/* 首页 P1 */
+body.p1 {
+    background: url('bg-p1.jpg') no-repeat center/cover;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: white;
+}
+
+.title {
+    font-size: 2.2rem;
+    margin-bottom: 40px;
+    text-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+}
+
+.main-btn {
+    background: linear-gradient(135deg, #FFD700, #FFB700);
+    border: none;
+    color: #333;
+    padding: 15px 40px;
+    font-size: 1.2rem;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+.main-btn:hover {
+    transform: scale(1.08);
+}
+
+#paint-layer {
+    position: fixed;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: url('paint-texture.png') repeat-x center/cover, #FFD700;
+    z-index: 100;
+    transition: left 2s ease-in-out;
+}
