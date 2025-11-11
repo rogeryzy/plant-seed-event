@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>预约成功 - 大师漆送彩活动</title>
+    <style>
+        body {
+            font-family: "Microsoft YaHei", sans-serif;
+            background: linear-gradient(180deg, #fff, #fef5e7);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            min-height: 100vh;
+            padding: 20px;
+            color: #333;
+            text-align: center;
+        }
+
+        h2 {
+            font-size: 2rem;
+            margin: 20px 0;
+            color: #FF9800;
+        }
+
+        .info {
+            font-size: 1.1rem;
+            margin: 6px 0;
+        }
+
+        #qrcode {
+            margin: 20px 0;
+        }
+
+        button {
+            background: #FFD700;
+            border: none;
+            padding: 10px 25px;
+            border-radius: 40px;
+            font-size: 1rem;
+            color: #333;
+            cursor: pointer;
+            box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
+        }
+
+        .success-img {
+            width: 180px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <img src="success.png" alt="预约成功" class="success-img">
+
+    <h2>预约成功！</h2>
+
+    <p class="info">姓名：<span id="name"></span></p>
+    <p class="info">联系方式：<span id="phone"></span></p>
+    <p class="info">公司：<span id="company"></span></p>
+    <p class="info">地域：<span id="region"></span></p>
+
+    <div id="qrcode"></div>
+    <button id="saveBtn">保存页面图片</button>
+
+    <!-- 引入二维码生成库 -->
+    <script src="https://cdn.jsdelivr.net/npm/qrcodejs@1.0.0/qrcode.min.js"></script>
+    <!-- 引入 html2canvas 库 -->
+    <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
+
+    <script>
+        // 1. 获取 URL 参数显示用户提交信息
+        const params = new URLSearchParams(window.location.search);
+        document.getElementById('name').textContent = params.get('name') || '';
+        document.getElementById('phone').textContent = params.get('phone') || '';
+        document.getElementById('company').textContent = params.get('company') || '';
+        document.getElementById('region').textContent = params.get('region') || '';
+
+        // 2. 生成二维码，指向当前页面
+        new QRCode(document.getElementById("qrcode"), {
+            text: window.location.href,
+            width: 160,
+            height: 160,
+        });
+
+        // 3. 保存整个页面为图片
+        document.getElementById('saveBtn').addEventListener('click', () => {
+            html2canvas(document.body).then(canvas => {
+                const link = document.createElement('a');
+                link.download = '大师漆预约成功.png';
+                link.href = canvas.toDataURL();
+                link.click();
+            });
+        });
+    </script>
+</body>
+
+</html>
