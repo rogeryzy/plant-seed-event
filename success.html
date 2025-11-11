@@ -73,9 +73,9 @@
     <script>
         // 1. 获取 URL 参数显示用户提交信息
         const params = new URLSearchParams(window.location.search);
-        document.getElementById('name').textContent = params.get('name') || '';
-        document.getElementById('phone').textContent = params.get('phone') || '';
-        document.getElementById('company').textContent = params.get('company') || '';
+        document.getElementById('name').textContent = params.get('field_1') || '';
+        document.getElementById('phone').textContent = params.get('field_2') || '';
+        document.getElementById('company').textContent = params.get('field_3') || '';
         document.getElementById('region').textContent = params.get('region') || '';
 
         // 2. 生成二维码，指向当前页面
@@ -96,5 +96,6 @@
         });
     </script>
 </body>
+
 
 </html>
